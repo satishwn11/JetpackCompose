@@ -26,6 +26,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
@@ -36,6 +37,7 @@ import androidx.compose.material3.ShapeDefaults
 import androidx.compose.material3.Shapes
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -55,6 +57,7 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.LineHeightStyle
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -72,89 +75,20 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun ListView() {
-    var text by remember { mutableStateOf("Display") }
-    val list = listOf(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,
-        16,17,18,19,20)
+    val list = listOf(1,2,3,4,5,6,7,8,9,10)
 
     Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .padding(16.dp),
+        modifier = Modifier.fillMaxSize(),
+        verticalArrangement = Arrangement.Top,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-       Text(text = text,
-           fontSize = 50.sp,
-           fontFamily = FontFamily.Serif,
-           modifier = Modifier.padding(20.dp)
-           )
-        Row(
-            modifier = Modifier
-                .fillMaxWidth(),
-            horizontalArrangement = Arrangement.Absolute.SpaceEvenly
-        ) {
-            Column(
-               modifier = Modifier.verticalScroll(rememberScrollState())
-            ) { list.forEach { item ->
-                Text(text = "$item",
-                    fontSize = 34.sp,
-                    fontFamily = FontFamily.Serif,
-                    fontStyle = FontStyle.Italic)
-            } }
-            Column(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(16.dp)
-                    .shadow(8.dp, RoundedCornerShape(16.dp))
-                    .background(Color(0xFFF7F7F7), RoundedCornerShape(16.dp))
-                    .padding(16.dp),
-                verticalArrangement = Arrangement.spacedBy(12.dp)
-            ) {
-                Button(
-                    onClick = { text = list.sum().toString() },
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .height(50.dp),
-                    shape = RoundedCornerShape(12.dp),
-                    colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF00C853))
-                ) {
-                    Text("Sum", fontSize = 18.sp, color = Color.White)
-                }
-
-                Button(
-                    onClick = { text = list.max().toString() },
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .height(50.dp),
-                    shape = RoundedCornerShape(12.dp),
-                    colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFFFA000))
-                ) {
-                    Text("Max", fontSize = 18.sp, color = Color.White)
-                }
-
-                Button(
-                    onClick = { text = list.min().toString() },
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .height(50.dp),
-                    shape = RoundedCornerShape(12.dp),
-                    colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF0288D1))
-                ) {
-                    Text("Min", fontSize = 18.sp, color = Color.White)
-                }
-
-                Button(
-                    onClick = { text = list.average().toString() },
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .height(50.dp),
-                    shape = RoundedCornerShape(12.dp),
-                    colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFD81B60))
-                ) {
-                    Text("Average", fontSize = 18.sp, color = Color.White)
-                }
-            }
-
+        list.forEach { item ->
+          Text(text =item.toString())
         }
     }
 }
+
+
+
+
 
