@@ -43,6 +43,7 @@ import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -80,49 +81,39 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun MainScreen() {
-        Column(
+    val sentences = remember { mutableStateListOf<String>() }
 
-        ) {
-            List()
-        }
-}
+    var text by remember { mutableStateOf("") }
 
-@Composable
-fun List() {
-    val sentences = listOf(
-       "tere ek pal dil nayo lagda",
-        "badhi mushkil hai ye zindagi aur kya karen samjha nahi hai",
-         "tera time jarura ayega tu zara sabra rakh yaar",
-        "hai jo irade bada dun tumko",
-        "sarma hi jayogi tum ",
-        "dharkne jo suna dun tumko ",
-        "tere ek pal dil nayo lagda",
-        "badhi mushkil hai ye zindagi aur kya karen samjha nahi hai",
-        "tera time jarura ayega tu zara sabra rakh yaar",
-        "hai jo irade bada dun tumko",
-        "sarma hi jayogi tum ",
-        "dharkne jo suna dun tumko ",
-        "tere ek pal dil nayo lagda",
-        "badhi mushkil hai ye zindagi aur kya karen samjha nahi hai",
-        "tera time jarura ayega tu zara sabra rakh yaar",
-        "hai jo irade bada dun tumko",
-        "sarma hi jayogi tum ",
-        "dharkne jo suna dun tumko ",
-        "tere ek pal dil nayo lagda",
-        "badhi mushkil hai ye zindagi aur kya karen samjha nahi hai",
-        "tera time jarura ayega tu zara sabra rakh yaar",
-        "hai jo irade bada dun tumko",
-        "sarma hi jayogi tum ",
-        "dharkne jo suna dun tumko ",
-    )
-
+    Column(
+        modifier = Modifier.fillMaxSize()
+            .padding(8.dp),
+        verticalArrangement = Arrangement.spacedBy(8.dp),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        TextField(
+            value = text,
+            onValueChange = { text = it },
+            placeholder = {Text("write something")}
+        )
+        Button(
+            onClick = {
+                if(text.isNotEmpty()) {
+                    sentences.add(text)
+                    text = ""
+                }
+            }
+        ) { Text("add") }
         TextItemView(sentences)
-}
+    }
+    }
+
 
 @Composable
 fun TextItemView(sentence: List<String>) {
     val customFont = Font(R.font.myboldfont)
     val customFontFamily = FontFamily(customFont)
+
 
     LazyColumn {
         items(sentence) { item ->
