@@ -80,7 +80,9 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun MainScreen() {
-        Column {
+        Column(
+
+        ) {
             List()
         }
 }
@@ -88,11 +90,30 @@ fun MainScreen() {
 @Composable
 fun List() {
     val sentences = listOf(
-        "ye pahla sentence hai",
-        "ye dusra sentence hai",
-        "ye tisra sentence hai",
-        "ye chauta sentence hai",
-        "ye panchwa sentence hai"
+       "tere ek pal dil nayo lagda",
+        "badhi mushkil hai ye zindagi aur kya karen samjha nahi hai",
+         "tera time jarura ayega tu zara sabra rakh yaar",
+        "hai jo irade bada dun tumko",
+        "sarma hi jayogi tum ",
+        "dharkne jo suna dun tumko ",
+        "tere ek pal dil nayo lagda",
+        "badhi mushkil hai ye zindagi aur kya karen samjha nahi hai",
+        "tera time jarura ayega tu zara sabra rakh yaar",
+        "hai jo irade bada dun tumko",
+        "sarma hi jayogi tum ",
+        "dharkne jo suna dun tumko ",
+        "tere ek pal dil nayo lagda",
+        "badhi mushkil hai ye zindagi aur kya karen samjha nahi hai",
+        "tera time jarura ayega tu zara sabra rakh yaar",
+        "hai jo irade bada dun tumko",
+        "sarma hi jayogi tum ",
+        "dharkne jo suna dun tumko ",
+        "tere ek pal dil nayo lagda",
+        "badhi mushkil hai ye zindagi aur kya karen samjha nahi hai",
+        "tera time jarura ayega tu zara sabra rakh yaar",
+        "hai jo irade bada dun tumko",
+        "sarma hi jayogi tum ",
+        "dharkne jo suna dun tumko ",
     )
 
         TextItemView(sentences)
@@ -102,22 +123,25 @@ fun List() {
 fun TextItemView(sentence: List<String>) {
     val customFont = Font(R.font.myboldfont)
     val customFontFamily = FontFamily(customFont)
-    sentence.forEach { item ->
-        Box(
-            modifier = Modifier
-                .padding(8.dp)
-                .fillMaxWidth()
-                .wrapContentHeight()
-                .clip(shape = RoundedCornerShape(8.dp))
-                .background(Color.Black)
-        ) {
-            Text(
-                text = item,
-                fontSize = 24.sp,
-                fontFamily = customFontFamily,
-                color = Color.White,
-                modifier = Modifier.padding(8.dp)
-            )
+
+    LazyColumn {
+        items(sentence) { item ->
+            Box(
+                modifier = Modifier
+                    .padding(8.dp)
+                    .fillMaxWidth()
+                    .wrapContentHeight()
+                    .clip(shape = RoundedCornerShape(8.dp))
+                    .background(Color.Black)
+            ) {
+                Text(
+                    text = item,
+                    fontSize = 24.sp,
+                    fontFamily = customFontFamily,
+                    color = Color.White,
+                    modifier = Modifier.padding(8.dp)
+                )
+            }
         }
     }
 
