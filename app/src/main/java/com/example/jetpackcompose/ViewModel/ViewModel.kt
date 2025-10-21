@@ -9,10 +9,10 @@ class viewModel() : ViewModel() {
 
     private val repository = Repository()
 
-    private val _fruits = MutableLiveData<String>()
-    val fruit: LiveData<String> = _fruits
+    private val _result = MutableLiveData<String>()
+    val result: LiveData<String> = _result
 
-    fun loadFruits() {
-       _fruits.value = repository.getFruits()
+    fun checkVowel(text: String) {
+       _result.value = repository.CheckVowels(text)
     }
 }
