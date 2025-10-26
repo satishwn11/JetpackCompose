@@ -1,4 +1,4 @@
-package com.example.jetpackcompose.ui.theme
+package com.devsatish.vocabo.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
@@ -10,4 +10,6 @@ val Purple40 = Color(0xFF6650a4)
 val PurpleGrey40 = Color(0xFF625b71)
 val Pink40 = Color(0xFF7D5260)
 
-val darkblue = Color(0xFF1994CA)
+//my custom colors
+val myGreen = Color(0xFF129D33)
+val softgray = Color(0xFFE0E0E0)
